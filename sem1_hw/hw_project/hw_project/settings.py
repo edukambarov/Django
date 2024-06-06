@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,10 +52,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'hw_project.urls'
 
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 TEMPLATES = [
     {
+
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "../hw_task1_app/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +125,41 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+     'version': 1,
+     'disable_existing_loggers': False,
+     'formatters': {
+         'verbose': {
+             'format': '{levelname} {asctime} {module} {process} {thread} {message}',
+             'style': '{',
+             },
+         'simple': {
+             'format': '%(levelname)s %(message)s'
+             },
+     },
+     'handlers': {
+         'console': {
+             'class': 'logging.StreamHandler',
+             'formatter': 'verbose', # добавлен параметр formatter
+        },
+         'file': {
+             'class': 'logging.FileHandler',
+             'filename': './log/django.log',
+             'formatter': 'verbose', # добавлен параметр formatter
+             },
+     },
+     'loggers': {
+     'django': {
+         'handlers': ['console', 'file'],
+         'level': 'INFO',
+         },
+
+     'hw_task1_app': {
+         'handlers': ['console', 'file'],
+         'level': 'DEBUG',
+         'propagate': True,
+        },
+     },
+}
