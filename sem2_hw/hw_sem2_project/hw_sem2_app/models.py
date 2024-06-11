@@ -33,6 +33,9 @@ class Client(models.Model):
     address = models.CharField(max_length=100)
     reg_date = models.DateField(default="2000-01-01")
 
+    def __str__(self):
+        return f'Client {self.client_name}'
+
 
 class Good(models.Model):
     good_name = models.CharField(max_length=100)
@@ -41,7 +44,8 @@ class Good(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     add_date = models.DateField(auto_now_add=True)
 
-
+    def __str__(self):
+        return f'Client {self.good_name}'
 
     def get_good_total(self):
         return self.price * self.quantity
@@ -54,9 +58,8 @@ class Order(models.Model):
     order_date = models.DateField(auto_now_add=True)
 
 
-# class OrderItem(models.Model):
-#     order = models.ForeignKey(Order, on_delete=CASCADE)
-#     good = models.ForeignKey(Good, on_delete=CASCADE)
+    def __str__(self):
+        return f'Order with {self.order_total} by {self.order_client}'
 
 
 

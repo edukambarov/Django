@@ -6,15 +6,15 @@ class Command(BaseCommand):
     help = "Create good"
     def handle(self, *args, **kwargs):
         good = Good(
-            good_name="Milk 1l",
-            description="Milk 1l Piskarevskiy",
-            price=65.50,
-            quantity = 3,
+            good_name="Banana 1kg",
+            description="Banana from Vietnam",
+            price=100.50,
+            quantity = 2,
         )
         # good = Good(
-        #     good_name="White bread",
-        #     description="White bread Fazer",
-        #     price=50.00,
+        #     good_name="Mango 1 kg",
+        #     description="Mango from Thailand",
+        #     price=199.00,
         #     quantity=3,
         # )
         good.save()
