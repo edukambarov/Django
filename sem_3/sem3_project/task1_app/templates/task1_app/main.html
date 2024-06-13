@@ -1,0 +1,21 @@
+{% extends 'task1_app/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+    <div class="row space-between">
+        <div class="col-md img-fluid rounded-circle">
+            <img src="../static/image/analyst.jpg"
+                 class = "col-12 col-md-10 img-fluid rounded-circle" alt="analyst.jpg">
+        </div>
+        <div class="col-md img-fluid rounded-circle"><img src="../static/image/developer.png" class = "col-12 col-md-10 img-fluid rounded-circle" alt="developer.png"></div>
+        <div class="col-md img-fluid rounded-circle"><img src="../static/image/footballer.png" class = "col-12 col-md-10 img-fluid rounded-circle" alt="footballer.png"></div>
+        <div class="col-md img-fluid rounded-circle"><img src="../static/image/financier.jpg" class = "col-12 col-md-10 img-fluid rounded-circle" alt="financier.jpg"></div>
+    </div>
+    <br>
+    <div>
+        <h2>{{ hello }}</h2>
+    </div>
+
+{% endblock %}
