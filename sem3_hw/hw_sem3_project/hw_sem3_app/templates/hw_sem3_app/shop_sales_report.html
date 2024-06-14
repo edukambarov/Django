@@ -1,0 +1,45 @@
+{% extends 'hw_sem3_app/shop_base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+ <style>
+   table {
+    border-spacing: 5px 5px;
+   }
+
+  </style>
+
+{% block content %}
+<div class="container-fluid" xmlns:border-spacing="http://www.w3.org/1999/xhtml">
+        <ul class="nav nav-pills justify-content-end align-items-end">
+            <li class="nav item"><a href="/shop_main/" class="nav-link">Главная</a></li>
+        </ul>
+   </div>
+   <h2>
+       Отчёт о покупках клиента {{ client }} за {{ days }} дней:
+   </h2>
+       <br>
+   <table>
+  <!-- table header -->
+  {% if sales %}
+  <tr>
+
+        {% for key in sales.0 %}
+     <th> {{ key }} </th>
+
+      {% endfor %}
+  </tr>
+  {% endif %}
+
+  <!-- table rows -->
+  {% for sale in sales %}
+  <tr>
+     {% for value in sale.values %}
+     <td> {{ value }} </td>
+     {% endfor %}
+  </tr>
+  {% endfor %}
+
+   </table>
+{% endblock %}
+
