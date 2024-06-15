@@ -16,30 +16,23 @@ def find_date_for_filter(days: int):
     return (end - timedelta(seconds=delta_sec)).date()
 
 
-def sort_orders_with_distinct_products(request, client_id: int, days: int):
+def sort_orders_of_the_client_by_date_and_distinct_products(request, client_id: int, days: int):
+    client = Client.objects.filter(id=client_id).first()
+    sales_ = []
     orders_ = Order.objects.filter(
         order_client_id=client_id,
         order_date__gte=find_date_for_filter(days))
-
-    client = Client.objects.filter(id=client_id).first()
-    good_refs = [ref['order_items'] for ref in orders_.values('order_items')]
-
-    goods = []
-    for ref in good_refs:
-        good = Good.objects.filter(id=ref).first()
-        goods.append(good)
-    goods_set = set(goods)
-    sales = []
-    print(goods_set)
-    i = 0
-    for good in list(goods_set):
-        sale = {'Товар': good.good_name}
-        if good.id in [ref['order_items'] for ref in orders_.values('order_items')]:
-            for order in list(orders_):
-                sale['Номер заказа'] = order.id
-                sale['Дата заказа'] = order.order_date
-        sales.append(sale)
-    print(sales)
+    good_set = set()
+    for order in list(orders_):
+        order_items = list(order.order_items.all())
+        for good in order_items:
+            if good not in good_set:
+                sale = {'Товар': good.good_name,
+                        'Номер заказа': order.id,
+                        'Дата заказа': order.order_date}
+                sales_.append(sale)
+            good_set.add(good)
+    sales = sorted(sales_, key=lambda x: x['Дата заказа'], reverse=True)
     context = {'title': f'{days} sales report',
                'sales': sales,
                'days': days,

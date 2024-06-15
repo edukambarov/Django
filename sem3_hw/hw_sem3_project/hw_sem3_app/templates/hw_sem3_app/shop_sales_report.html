@@ -4,23 +4,28 @@
 
  <style>
    table {
-    border-spacing: 5px 5px;
+    border-spacing: 7px 7px;
    }
 
   </style>
 
 {% block content %}
-<div class="container-fluid" xmlns:border-spacing="http://www.w3.org/1999/xhtml">
+   <div class="container-fluid">
         <ul class="nav nav-pills justify-content-end align-items-end">
-            <li class="nav item"><a href="/shop_main/" class="nav-link">Главная</a></li>
+            <li class="nav item"><a href="/" class="nav-link">Главная</a></li>
         </ul>
    </div>
-   <h2>
+    <h2>
        Отчёт о покупках клиента {{ client }} за {{ days }} дней:
-   </h2>
+    </h2>
+    <h3>
+       Чтобы получить отчёт о покупках другого клиента, введите его id (целое число от 1 до 5) в адресной строке,
+    </h3>
+    <h3>
+   после домена "shop_sales_report" и между двумя косыми чертами ("/")
+    </h3>
        <br>
    <table>
-  <!-- table header -->
   {% if sales %}
   <tr>
 
@@ -31,7 +36,6 @@
   </tr>
   {% endif %}
 
-  <!-- table rows -->
   {% for sale in sales %}
   <tr>
      {% for value in sale.values %}
