@@ -18,6 +18,7 @@ def find_date_for_filter(days: int):
 
 def sort_orders_of_the_client_by_date_and_distinct_products(request, client_id: int, days: int):
     client = Client.objects.filter(id=client_id).first()
+    number_of_clients = len(list(Client.objects.all()))
     sales_ = []
     orders_ = Order.objects.filter(
         order_client_id=client_id,
@@ -35,6 +36,7 @@ def sort_orders_of_the_client_by_date_and_distinct_products(request, client_id: 
     sales = sorted(sales_, key=lambda x: x['Дата заказа'], reverse=True)
     context = {'title': f'{days} sales report',
                'sales': sales,
+               'number_of_clients': number_of_clients,
                'days': days,
                'client': client.client_name}
     return render(request,'hw_sem3_app/shop_sales_report.html', context=context)
