@@ -31,7 +31,7 @@ class Client(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20, validators=[RegexValidator(regex=r'^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$')])
     address = models.CharField(max_length=100)
-    reg_date = models.DateField(default="2000-01-01")
+    reg_date = models.DateField(default="2020-01-01")
 
     def __str__(self):
         return f'Client {self.client_name}'
@@ -42,20 +42,20 @@ class Good(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=12, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
-    add_date = models.DateField(auto_now_add=True)
+    add_date = models.DateField(default="2023-01-01")
 
     def __str__(self):
-        return f'Client {self.good_name}'
+        return f'Good {self.good_name}'
 
     def get_good_total(self):
         return self.price * self.quantity
 
 
 class Order(models.Model):
-    order_client = models.OneToOneField(Client, on_delete=CASCADE)
+    order_client = models.ForeignKey(Client, on_delete=models.CASCADE)
     order_total = models.DecimalField(max_digits=12, decimal_places=2,default=0)
     order_items = models.ManyToManyField(Good)
-    order_date = models.DateField(auto_now_add=True)
+    order_date = models.DateField(default="2023-01-01")
 
 
     def __str__(self):
