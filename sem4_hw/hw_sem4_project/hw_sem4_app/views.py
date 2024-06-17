@@ -1,3 +1,4 @@
+import os.path
 from datetime import datetime, timedelta
 
 from django.core.files.storage import FileSystemStorage
@@ -70,4 +71,27 @@ def add_good(request):
     return render(request, 'hw_sem4_app/shop_add_good.html', context)
 
 
-
+def add_good_with_pic_in_db(request):
+    if request.method == 'POST':
+        form = GoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            good_name = form.cleaned_data['good_name']
+            description = form.cleaned_data['description']
+            price = form.cleaned_data['price']
+            quantity = form.cleaned_data['quantity']
+            add_date = form.cleaned_data['add_date']
+            image = form.cleaned_data['image']
+            fs = FileSystemStorage()
+            fs.save(image.name, image)
+            good = Good.objects.create(
+                good_name=good_name,
+                description=description,
+                price=price,
+                quantity=quantity,
+                add_date=add_date,
+                image=image
+            )
+    else:
+        form = GoodForm()
+    context = {'title': 'Добавить товар', 'form': form}
+    return render(request, 'hw_sem4_app/shop_add_good.html', context)
