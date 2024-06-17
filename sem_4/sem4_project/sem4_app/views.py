@@ -15,18 +15,18 @@ logger = logging.getLogger(__name__)
 # def index(request):
 #     # logger.info('Main page was visited.')
 #     context = {'hello': 'Всем привет!', 'title': 'Main page'}
-#     return render(request, "hw_sem3_app/main.html", context=context)
+#     return render(request, "hw_sem4_app/main.html", context=context)
 #
 #
 # def about(request):
 #     # logger.info('Main page was visited.')
 #     context = {'title': 'About me'}
-#     return render(request, "hw_sem3_app/about.html", context=context)
+#     return render(request, "hw_sem4_app/about.html", context=context)
 
 
 def games(request):
     context = {'title': 'games'}
-    return render(request, "hw_sem3_app/shop_main.html", context=context)
+    return render(request, "hw_sem4_app/shop_main.html", context=context)
 
 
 
