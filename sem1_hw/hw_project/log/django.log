@@ -2,3 +2,14 @@ INFO 2024-06-06 18:51:04,358 autoreload 6216 2440 Watching for file changes with
 INFO 2024-06-06 18:51:19,680 basehttp 6216 9920 "GET / HTTP/1.1" 200 1564
 INFO 2024-06-06 18:51:22,226 basehttp 6216 9920 "GET /about/ HTTP/1.1" 200 1784
 INFO 2024-06-06 18:51:45,370 basehttp 6216 11000 "GET / HTTP/1.1" 200 1564
+INFO 2024-06-07 18:34:05,293 autoreload 7764 9028 Watching for file changes with StatReloader
+INFO 2024-06-07 18:34:07,777 basehttp 7764 1620 "GET / HTTP/1.1" 200 1564
+INFO 2024-06-07 18:34:08,059 basehttp 7764 1620 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155851
+INFO 2024-06-07 18:34:08,070 basehttp 7764 7264 "GET /static/image/analyst.jpg HTTP/1.1" 200 187268
+INFO 2024-06-07 18:34:08,087 basehttp 7764 7568 "GET /static/image/developer.png HTTP/1.1" 200 143681
+INFO 2024-06-07 18:34:08,103 basehttp 7764 8436 "GET /static/image/financier.jpg HTTP/1.1" 200 83153
+INFO 2024-06-07 18:34:08,106 basehttp 7764 5756 "GET /static/image/footballer.png HTTP/1.1" 200 136009
+WARNING 2024-06-07 18:34:08,611 log 7764 5756 Not Found: /favicon.ico
+WARNING 2024-06-07 18:34:08,611 basehttp 7764 5756 "GET /favicon.ico HTTP/1.1" 404 2441
+INFO 2024-06-07 18:34:11,831 basehttp 7764 5756 "GET /about/ HTTP/1.1" 200 1784
+INFO 2024-06-07 18:34:13,489 basehttp 7764 5756 "GET / HTTP/1.1" 200 1564

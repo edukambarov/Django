@@ -14,18 +14,18 @@ logger = logging.getLogger(__name__)
 def index(request):
     # logger.info('Main page was visited.')
     context = {'hello': 'Всем привет!', 'title': 'Main page'}
-    return render(request, "task1_app/main.html", context=context)
+    return render(request, "hw_sem3_app/main.html", context=context)
 
 
 def about(request):
     # logger.info('Main page was visited.')
     context = {'title': 'About me'}
-    return render(request, "task1_app/about.html", context=context)
+    return render(request, "hw_sem3_app/about.html", context=context)
 
 
 def games(request):
     context = {'title': 'games'}
-    return render(request, "task1_app/games_main.html", context=context)
+    return render(request, "hw_sem3_app/shop_main.html", context=context)
 
 
 
@@ -43,7 +43,7 @@ def dice(request, attempts: int):
         context = {'title': 'dice',
                     'game': 'игральные кости',
                     'attempts': dice_attempts}
-        return render(request, "task1_app/games_play.html", context)
+        return render(request, "hw_sem3_app/games_play.html", context)
     except Exception as e:
         logger.exception(f'Error in about page: {e}')
 
@@ -64,7 +64,7 @@ def coinflip(request, attempts: int):
         context = {'title': 'coinflip',
                    'game': 'подбрасывание монетки',
                    'attempts': coinflip_attempts}
-        return render(request, "task1_app/games_play.html", context)
+        return render(request, "hw_sem3_app/games_play.html", context)
     except Exception as e:
         logger.exception(f'Error in about page: {e}')
 
@@ -85,7 +85,7 @@ def random_num(request, attempts: int):
         context = {'title': 'random_num',
                    'game': 'выпадение случайного числа от 1 до 100',
                    'attempts': random_num_attempts}
-        return render(request, "task1_app/games_play.html", context)
+        return render(request, "hw_sem3_app/games_play.html", context)
     except Exception as e:
         logger.exception(f'Error in about page: {e}')
 
@@ -95,4 +95,4 @@ def articles(request, id_author: int):
     articles_ = Article.objects.filter(author=author)
     context = {'title': f'Статьи автора {author.full_name()}',
                'articles': articles_}
-    return render(request, "task1_app/articles.html", context)
+    return render(request, "hw_sem3_app/articles.html", context)

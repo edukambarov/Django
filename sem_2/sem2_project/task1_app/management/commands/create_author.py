@@ -8,11 +8,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         author = Author(
-            first_name="John",
+            first_name="Jane",
             last_name="Doe",
             bio="Legendary John Doe",
-            birthday="1987-01-01",
-            email="johndoe@pochta.ru",
+            birthday="1988-02-02",
+            email="janedoe@pochta.ru",
         )
         author.save()
         self.stdout.write(f'Author "{author.full_name()}" added.')

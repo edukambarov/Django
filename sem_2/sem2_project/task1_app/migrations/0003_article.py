@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('task1_app', '0002_author'),
+        ('hw_sem3_app', '0002_author'),
     ]
 
     operations = [
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('category', models.CharField(max_length=100)),
                 ('is_published', models.BooleanField(default=False)),
                 ('views', models.PositiveIntegerField(default=0)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='task1_app.author')),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='hw_sem3_app.author')),
             ],
         ),
     ]

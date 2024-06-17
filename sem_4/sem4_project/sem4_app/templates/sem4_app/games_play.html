@@ -1,0 +1,21 @@
+{% extends 'sem4_app/base_games.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+   <div class="container-fluid">
+        <ul class="nav nav-pills justify-content-end align-items-end">
+            <li class="nav item"><a href="/games/" class="nav-link">Главная</a></li>
+        </ul>
+   </div>
+   <h2>
+       Вы играете в {{ game }}
+   </h2>
+       <br>
+   <table>
+      {% for key, value in attempts.items %}
+         <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
+      {% endfor %}
+   </table>
+{% endblock %}
+

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'task1_app',
+    'hw_sem3_app',
     'task5_app',
 
 ]

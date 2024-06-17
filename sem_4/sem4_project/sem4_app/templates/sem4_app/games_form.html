@@ -1,0 +1,12 @@
+{% extends 'sem4_app/base_games.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <input type="submit" value="Отправить">
+</form>
+{% endblock %}
