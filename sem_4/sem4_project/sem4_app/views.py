@@ -163,3 +163,5 @@ def articles(request, id_author: int = None):
     context = {'title': title,
                'articles': articles_}
     return render(request, "sem4_app/articles.html", context)
+
+
