@@ -83,7 +83,7 @@ def add_good_with_pic_in_db(request):
             image = form.cleaned_data['image']
             fs = FileSystemStorage()
             fs.save(image.name, image)
-            good = Good.objects.create(
+            Good.objects.create(
                 good_name=good_name,
                 description=description,
                 price=price,
