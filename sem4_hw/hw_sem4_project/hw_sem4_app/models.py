@@ -43,6 +43,9 @@ class Good(models.Model):
     price = models.DecimalField(max_digits=12, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
     add_date = models.DateField(default="2023-01-01")
+    image = models.ImageField(blank=True, height_field=100, width_field=100)
+
+
 
     def __str__(self):
         return f'Good {self.good_name}'
