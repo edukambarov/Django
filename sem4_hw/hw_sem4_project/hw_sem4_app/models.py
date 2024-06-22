@@ -45,8 +45,6 @@ class Good(models.Model):
     add_date = models.DateField(default="2023-01-01")
     image = models.ImageField(blank=True, height_field=100, width_field=100)
 
-
-
     def __str__(self):
         return f'{self.good_name} (price: {self.price}, quantity: {self.quantity})'
 
