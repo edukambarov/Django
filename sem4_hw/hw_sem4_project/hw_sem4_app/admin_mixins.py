@@ -46,8 +46,11 @@ class ExportAsCSVMixin:
 
             if values != None:
                 for data in values:
-                    good = Good.objects.get(pk=data)
-                    data_row[-1] = str(good)
+                    try:
+                        good = Good.objects.get(pk=data)
+                        data_row[-1] = str(good)
+                    except:
+                        data_row[-1] = data
                     result.writerow(data_row)
             else:
                 result.writerow(data_row)
