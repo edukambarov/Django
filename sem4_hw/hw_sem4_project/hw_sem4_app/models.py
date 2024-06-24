@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinValueValidator
 from django.db.models import CASCADE
 
 
@@ -34,21 +34,21 @@ class Client(models.Model):
     reg_date = models.DateField(default="2020-01-01")
 
     def __str__(self):
-        return f'Client {self.client_name}'
+        return f'{self.client_name}'
 
 
 class Good(models.Model):
     good_name = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.DecimalField(max_digits=12, decimal_places=2)
+    price = models.DecimalField(max_digits=12, decimal_places=2,
+                                validators=[
+                                    MinValueValidator(0.0)],)
     quantity = models.PositiveIntegerField(default=1)
     add_date = models.DateField(default="2023-01-01")
     image = models.ImageField(blank=True, height_field=100, width_field=100)
 
-
-
     def __str__(self):
-        return f'Good {self.good_name}'
+        return f'{self.good_name} (price: {self.price}, quantity: {self.quantity})'
 
     def get_good_total(self):
         return self.price * self.quantity
@@ -59,6 +59,9 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=12, decimal_places=2,default=0)
     order_items = models.ManyToManyField(Good)
     order_date = models.DateField(default="2023-01-01")
+
+    def get_order_items(self):
+        return "\n".join([str(x) for x in list(self.order_items.all())])
 
 
     def __str__(self):
